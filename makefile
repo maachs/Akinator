@@ -5,8 +5,8 @@ flags = -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equa
 akinator: a.exe
 	a.exe Akinator.txt Dump.dot
 
-a.exe: main.o TreeInit.o Dump.o ReadCode.o
-	g++ main.o TreeInit.o Dump.o ReadCode.o
+a.exe: main.o TreeInit.o Dump.o ReadCode.o Guess.o
+	g++ main.o TreeInit.o Dump.o ReadCode.o Guess.o
 
 main.o: main.cpp
 	g++ -c $(flags) main.cpp
@@ -19,6 +19,9 @@ Dump.o: Dump.cpp
 
 ReadCode.o: ReadCode.cpp
 	g++ -c $(flags) ReadCode.cpp
+
+Guess.o: Guess.cpp
+	g++ -c $(flags) Guess.cpp
 
 clean:
 	rm -rf *.o *.exe

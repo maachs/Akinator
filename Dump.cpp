@@ -32,7 +32,7 @@ int GraphicDump(Node_t* node, char** argv)
         return -1;
     }
 
-    fprintf(dump, "digraph G\n{\n rankdir = UD\nbgcolor = \"aquamarine\"\n");
+    fprintf(dump, "digraph G\n{\n rankdir = UD\nbgcolor = \"aquamarine3\"\n");
 
     DrawLabels(node, dump);
 
