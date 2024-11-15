@@ -23,12 +23,16 @@ void PrintInorder(Node_t* node)
 
 int GraphicDump(Node_t* node, char** argv)
 {
-    assert(node);
     assert(argv);
 
     FILE* dump = fopen(argv[2], "w");
+    if(dump == NULL)
+    {
+        printf("cannot open file\n");
+        return -1;
+    }
 
-    fprintf(dump, "digraph G\n{\n rankdir = UD\n");
+    fprintf(dump, "digraph G\n{\n rankdir = UD\nbgcolor = \"aquamarine\"\n");
 
     DrawLabels(node, dump);
 
@@ -43,23 +47,23 @@ int GraphicDump(Node_t* node, char** argv)
 
 int DrawLabels(Node_t* node, FILE* dump)
 {
-    assert(node);
     assert(dump);
 
-    fprintf(dump, "\"%s\" [shape = Mrecord, style = \"filled\", fillcolor = \"forestgreen\", label = \"{%s | addr = %p | left = %p | right = %p | parent = %p}\"];\n",
-             node->data,                                                                         node->data,       node, node->left, node->right, node->parent);
+    fprintf(dump, "\"%s\" [shape = Mrecord, style = \"filled\", fillcolor = \"darkslateblue\","
+            " label = \"{%s | addr = %p | left = %p | right = %p | parent = %p}\"];\n",
+                node->data, node->data, node, node->left, node->right, node->parent);
 
     if(node->left != NULL)
     {
         DrawLabels(node->left,  dump);
-        fprintf(dump, " edge[color = \"green\", label = \"yes\"];\n");
+        fprintf(dump, " edge[color = \"darkgreen\", label = \"yes\"];\n");
         fprintf(dump, "\"%s\" -> \"%s\";", node->data, node->left->data);
     }
 
     if(node->right != NULL)
     {
         DrawLabels(node->right, dump);
-        fprintf(dump, " edge[color = \"red\", label = \"no\"];\n");
+        fprintf(dump, " edge[color = \"firebrick4\", label = \"no\"];\n");
         fprintf(dump, "\"%s\" -> \"%s\";\n", node->data, node->right->data);
     }
 

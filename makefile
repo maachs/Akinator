@@ -6,7 +6,7 @@ akinator: a.exe
 	a.exe Akinator.txt Dump.dot
 
 a.exe: main.o TreeInit.o Dump.o ReadCode.o
-	g++ main.o
+	g++ main.o TreeInit.o Dump.o ReadCode.o
 
 main.o: main.cpp
 	g++ -c $(flags) main.cpp

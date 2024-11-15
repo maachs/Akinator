@@ -10,6 +10,7 @@ int TreeDtor(Node_t* node)
     TreeDtor(node->left);
     TreeDtor(node->right);
 
+    free(node->data);
     free(node);
 
     node = NULL;
@@ -18,7 +19,7 @@ int TreeDtor(Node_t* node)
 
 }
 
-Node_t* MakeNode(Node_t* parent, char* value)
+Node_t* MakeNode(Node_t* parent, const char* value)
 {
     Node_t* node = (Node_t*)calloc(1, sizeof(Node_t));
 
@@ -29,7 +30,7 @@ Node_t* MakeNode(Node_t* parent, char* value)
         return NULL;
     }
 
-    node->data = value;
+    node->data = strdup(value);
     node->left = NULL;
     node->right = NULL;
 

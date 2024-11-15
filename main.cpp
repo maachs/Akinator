@@ -1,6 +1,7 @@
 #include "AkinatorFunc.h"
 #include "ReadCode.h"
 #include "TreeInit.h"
+#include "Dump.h"
 
 int main(int argc, char** argv)
 {
@@ -25,6 +26,8 @@ int main(int argc, char** argv)
     fclose(file_scan);
 
     //PrintInorder(root);
+
+    GraphicDump(root, argv);
 
     TreeDtor(root);
 

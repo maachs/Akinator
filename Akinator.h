@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 const int MAX_DATA_LEN = 40;
 

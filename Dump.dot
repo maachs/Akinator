@@ -1,0 +1,41 @@
+digraph G
+{
+ rankdir = UD
+bgcolor = "aquamarine"
+"Champion" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{Champion | addr = 00C115A0 | left = 00C115D0 | right = 00C11650 | parent = 00000000}"];
+"the best club in the world" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{the best club in the world | addr = 00C115D0 | left = 00C11610 | right = 00C11628 | parent = 00C115A0}"];
+"Zenit" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{Zenit | addr = 00C11610 | left = 00000000 | right = 00000000 | parent = 00C115D0}"];
+ edge[color = "darkgreen", label = "yes"];
+"the best club in the world" -> "Zenit";"Mancity" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{Mancity | addr = 00C11628 | left = 00000000 | right = 00000000 | parent = 00C115D0}"];
+ edge[color = "firebrick4", label = "no"];
+"the best club in the world" -> "Mancity";
+ edge[color = "darkgreen", label = "yes"];
+"Champion" -> "the best club in the world";"a bus lover in quarter-finals" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{a bus lover in quarter-finals | addr = 00C11650 | left = 00C11690 | right = 00C116C0 | parent = 00C115A0}"];
+"Real Madrid" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{Real Madrid | addr = 00C11690 | left = 00000000 | right = 00000000 | parent = 00C11650}"];
+ edge[color = "darkgreen", label = "yes"];
+"a bus lover in quarter-finals" -> "Real Madrid";"Russian" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{Russian | addr = 00C116C0 | left = 00C116E8 | right = 00C16AB0 | parent = 00C11650}"];
+"located in Moscow" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{located in Moscow | addr = 00C116E8 | left = 00C11720 | right = 00C11748 | parent = 00C116C0}"];
+"Spartak" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{Spartak | addr = 00C11720 | left = 00000000 | right = 00000000 | parent = 00C116E8}"];
+ edge[color = "darkgreen", label = "yes"];
+"located in Moscow" -> "Spartak";"from Bashkiria" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{from Bashkiria | addr = 00C11748 | left = 00C11778 | right = 00C117A0 | parent = 00C116E8}"];
+"Ufa" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{Ufa | addr = 00C11778 | left = 00000000 | right = 00000000 | parent = 00C11748}"];
+ edge[color = "darkgreen", label = "yes"];
+"from Bashkiria" -> "Ufa";"Krasnodar" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{Krasnodar | addr = 00C117A0 | left = 00000000 | right = 00000000 | parent = 00C11748}"];
+ edge[color = "firebrick4", label = "no"];
+"from Bashkiria" -> "Krasnodar";
+ edge[color = "firebrick4", label = "no"];
+"located in Moscow" -> "from Bashkiria";
+ edge[color = "darkgreen", label = "yes"];
+"Russian" -> "located in Moscow";"called flamingoes" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{called flamingoes | addr = 00C16AB0 | left = 00C16960 | right = 00C16978 | parent = 00C116C0}"];
+"Liverpool" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{Liverpool | addr = 00C16960 | left = 00000000 | right = 00000000 | parent = 00C16AB0}"];
+ edge[color = "darkgreen", label = "yes"];
+"called flamingoes" -> "Liverpool";"Bayern" [shape = Mrecord, style = "filled", fillcolor = "darkslateblue", label = "{Bayern | addr = 00C16978 | left = 00000000 | right = 00000000 | parent = 00C16AB0}"];
+ edge[color = "firebrick4", label = "no"];
+"called flamingoes" -> "Bayern";
+ edge[color = "firebrick4", label = "no"];
+"Russian" -> "called flamingoes";
+ edge[color = "firebrick4", label = "no"];
+"a bus lover in quarter-finals" -> "Russian";
+ edge[color = "firebrick4", label = "no"];
+"Champion" -> "a bus lover in quarter-finals";
+}
