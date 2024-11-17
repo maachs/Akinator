@@ -36,10 +36,22 @@ int Guess(Node_t* node)
     }
     else
     {
-        while(stricmp(answer, "yes") != 0 || stricmp(answer, "no") != 0)
+        while(stricmp(answer, "yes") != 0 && stricmp(answer, "no") != 0)
         {
             printf("answer gonna be yes or no\n");
             scanf("%s", answer);
         }
+        if(node->right == NULL)
+        {
+            printf("you've made a wish %s\n", node->data);
+
+            return 0;
+        }
+        if(Guess(node->right) == 0)
+        {
+            return 0;
+        }
     }
+
+    return 0;
 }

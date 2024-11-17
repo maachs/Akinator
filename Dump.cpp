@@ -50,8 +50,8 @@ int DrawLabels(Node_t* node, FILE* dump)
     assert(dump);
 
     fprintf(dump, "\"%s\" [shape = Mrecord, style = \"filled\", fillcolor = \"darkslateblue\","
-            " label = \"{%s | addr = %p | left = %p | right = %p | parent = %p}\"];\n",
-                node->data, node->data, node, node->left, node->right, node->parent);
+            " label = \"{%s | addr = %p | parent = %p | {left = %p | right = %p}}\"];\n",
+                node->data, node->data, node, node->parent, node->left, node->right);
 
     if(node->left != NULL)
     {

@@ -6,6 +6,7 @@
 #include "TreeInit.h"
 #include "Dump.h"
 #include "Guess.h"
+#include "Definition.h"
 
 //int Insert(Node_t* node, int value);
 

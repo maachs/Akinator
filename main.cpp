@@ -22,9 +22,8 @@ int main(int argc, char** argv)
 
     fclose(file_scan);
 
-    //PrintInorder(root);
-
-    Guess(root);
+    Definition(root);
+    //Guess(root);
 
     //GraphicDump(root, argv);
 

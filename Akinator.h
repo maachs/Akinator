@@ -7,6 +7,7 @@
 #include <string.h>
 
 const int MAX_DATA_LEN = 40;
+const int TREE_DEPTH   = 12;
 
 struct Node_t
 {
