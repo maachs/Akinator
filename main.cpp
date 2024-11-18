@@ -22,53 +22,13 @@ int main(int argc, char** argv)
 
     fclose(file_scan);
 
-    Definition(root);
-    //Guess(root);
+    //Definition(root);
 
-    //GraphicDump(root, argv);
+    Guess(root);
+
+    GraphicDump(root, argv);
 
     TreeDtor(root);
 
     return 0;
 }
-/*
-int Insert(Node_t* node, int value)
-{
-    assert(node);
-    assert(value);
-
-    if(value < node->data)
-    {
-        if(node->left != NULL)
-        {
-            Insert(node->left, value);
-        }
-        else
-        {
-            node->left = MakeNode(node->left, value);
-
-            if(node->left == NULL)
-            {
-                return -1;
-            }
-        }
-    }
-    else
-    {
-        if(node->right != NULL)
-        {
-            Insert(node->right, value);
-        }
-        else
-        {
-            node->right = MakeNode(node->right, value);
-
-            if(node->right == NULL)
-            {
-                return -1;
-            }
-       }
-    }
-
-    return 0;
-}*/

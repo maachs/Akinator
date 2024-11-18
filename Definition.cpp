@@ -4,9 +4,21 @@ int Definition(Node_t* node)
 {
     char def_word[MAX_DATA_LEN] = {};
 
-    scanf("%s", def_word);
+    printf("enter the word whose definition you want to know\n");
+
+    if(scanf("%s", def_word) == 0)
+    {
+        printf("cannot read word for definition\n");
+        return -1;
+    }
 
     Node_t** definition_addr = (Node_t**) calloc(TREE_DEPTH, sizeof(Node_t*));
+
+    if(definition_addr == NULL)
+    {
+        printf("calloc error\n");
+        return -1;
+    }
 
     for(int i = 0; i < TREE_DEPTH; i++)
     {
@@ -54,6 +66,7 @@ int GetWord(Node_t* node, char def_word[MAX_DATA_LEN], Node_t** definition_addr,
     if(GetWord(node->left, def_word, definition_addr, count_node) == 0)
     {
         definition_addr[(*count_node)++] = node;
+
         return 0;
     }
 
@@ -77,6 +90,7 @@ int PrintDefinition(Node_t* node, Node_t** definition_addr, int* count_node)
         }
 
         printf("%s ", node->data);
+
         (*count_node)--;
     }
     else if(definition_addr[(*count_node)] == node->right)
@@ -87,6 +101,7 @@ int PrintDefinition(Node_t* node, Node_t** definition_addr, int* count_node)
         }
 
         printf("not %s ", node->data);
+
         (*count_node)--;
     }
     else
