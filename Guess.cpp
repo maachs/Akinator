@@ -1,7 +1,7 @@
 #include "Guess.h"
 #include "TreeInit.h"
 
-int Guess(Node_t* node)
+int Guess(Node_t* node, Node_t* root, char** argv)
 {
     char answer[MAX_DATA_LEN] = {};
 
@@ -11,7 +11,7 @@ int Guess(Node_t* node)
 
     if(stricmp(answer, "no") == 0 && node->left == NULL && node->right == NULL)
     {
-        node = CreateNode(node);
+        node = CreateNode(node, root, argv);
     }
 
     if(stricmp(answer, "yes") == 0)
@@ -22,7 +22,7 @@ int Guess(Node_t* node)
 
             return 0;
         }
-        if(Guess(node->left) == 0)
+        if(Guess(node->left, root, argv) == 0)
         {
             return 0;
         }
@@ -35,7 +35,7 @@ int Guess(Node_t* node)
 
             return 0;
         }
-        if(Guess(node->right) == 0)
+        if(Guess(node->right, root, argv) == 0)
         {
             return 0;
         }
@@ -55,7 +55,7 @@ int Guess(Node_t* node)
 
                 return 0;
             }
-            if(Guess(node->left) == 0)
+            if(Guess(node->left, root, argv) == 0)
             {
                 return 0;
             }
@@ -68,7 +68,7 @@ int Guess(Node_t* node)
 
                 return 0;
             }
-            if(Guess(node->right) == 0)
+            if(Guess(node->right, root, argv) == 0)
             {
                 return 0;
             }
@@ -78,9 +78,11 @@ int Guess(Node_t* node)
     return 0;
 }
 
-Node_t* CreateNode(Node_t* node)
+Node_t* CreateNode(Node_t* node, Node_t* root, char** argv)
 {
     assert(node);
+    assert(root);
+    assert(argv);
 
     char new_question[MAX_DATA_LEN] = {};
     char new_left    [MAX_DATA_LEN] = {};
@@ -101,5 +103,36 @@ Node_t* CreateNode(Node_t* node)
 
     node->right = MakeNode(node, new_right);
 
+    FILE* rewrite = fopen(argv[1], "w");
+
+    if(rewrite == NULL)
+    {
+        printf("cannot open file\n");
+        return NULL;
+    }
+
+    RewriteFile(root, rewrite);
+
+    fclose(rewrite);
+
     return node;
 }
+
+int RewriteFile(Node_t* node, FILE* rewrite)
+{
+    if(node == NULL)
+    {
+        return 0;
+    }
+
+    fprintf(rewrite, "{\"%s\"", node->data);
+
+    RewriteFile(node->left, rewrite);
+    RewriteFile(node->right, rewrite);
+
+
+    fprintf(rewrite, "}");
+
+    return 0;
+}
+

@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 
     //Definition(root);
 
-    Guess(root);
+    Guess(root, root, argv);
 
     GraphicDump(root, argv);
 
