@@ -12,6 +12,8 @@ int Guess(Node_t* node, Node_t* root, char** argv)
     if(stricmp(answer, "no") == 0 && node->left == NULL && node->right == NULL)
     {
         node = CreateNode(node, root, argv);
+
+        printf("get answer\n");
     }
 
     if(stricmp(answer, "yes") == 0)

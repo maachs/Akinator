@@ -35,16 +35,11 @@ int Definition(Node_t* node)
         return 0;
     }
 
-    int count_print = 0;
-    while(definition_addr[count_print] != NULL)
-    {
-        count_print++;
-    }
-    count_print -= 2;
+    count_node -= 2;
 
     printf("%s is ", def_word);
 
-    PrintDefinition(node, definition_addr, &count_print);
+    PrintDefinition(node, definition_addr, &count_node);
 
     printf("\n");
 
