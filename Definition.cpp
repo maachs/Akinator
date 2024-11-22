@@ -43,6 +43,9 @@ int Definition(Node_t* node)
 
     printf("\n");
 
+    free(definition_addr);
+    definition_addr = NULL;
+
     return 0;
 }
 

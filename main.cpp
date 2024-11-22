@@ -22,15 +22,51 @@ int main(int argc, char** argv)
 
     fclose(file_scan);
 
-    //Definition(root);
+    ChooseMode(root, argv);
 
-    DifferenceInDefinition(root);
+    return 0;
+}
 
-    //Guess(root, root, argv);
+int ChooseMode(Node_t* root, char** argv)
+{
+    assert(root);
 
-    GraphicDump(root, argv);
+    int mode = 0;
 
-    TreeDtor(root);
+    printf("choose akinator mode\n");
+
+    scanf("%d", &mode);
+
+    switch(mode)
+    {
+        case GUESS:
+        {
+            Guess(root, root, argv);
+
+            GraphicDump(root, argv);
+
+            TreeDtor(root);
+        }
+        case DEFINITION:
+        {
+            Definition(root);
+
+            GraphicDump(root, argv);
+
+            TreeDtor(root);
+        }
+        case DIFFERENCE:
+        {
+            DifferenceInDefinition(root);
+
+            GraphicDump(root, argv);
+
+            TreeDtor(root);
+        }
+        default:
+        printf("cannot defined mode\n");
+        return -1;
+    }
 
     return 0;
 }

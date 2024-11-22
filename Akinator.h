@@ -17,4 +17,11 @@ struct Node_t
     Node_t* parent;
 };
 
+enum Mode
+{
+    GUESS      = 1,
+    DEFINITION = 2,
+    DIFFERENCE = 3
+};
+
 #endif

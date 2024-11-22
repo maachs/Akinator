@@ -91,13 +91,13 @@ Node_t* CreateNode(Node_t* node, Node_t* root, char** argv)
     char new_right   [MAX_DATA_LEN] = {};
 
     printf("enter new question\n");
-    scanf("%s", new_question);
+    scanf("%s", new_question); // TODO set max string size
 
     printf("enter answer if yes\n");
-    scanf("%s", new_left);
+    scanf("%s", new_left); // TODO set max string size
 
     printf("enter answer if no\n");
-    scanf("%s", new_right);
+    scanf("%s", new_right); // TODO set max string size
 
     node->data = strdup(new_question);
 
@@ -105,7 +105,7 @@ Node_t* CreateNode(Node_t* node, Node_t* root, char** argv)
 
     node->right = MakeNode(node, new_right);
 
-    FILE* rewrite = fopen(argv[1], "w");
+    FILE* rewrite = fopen(argv[1], "w"); // TODO what is rewrite
 
     if(rewrite == NULL)
     {
@@ -120,7 +120,7 @@ Node_t* CreateNode(Node_t* node, Node_t* root, char** argv)
     return node;
 }
 
-int RewriteFile(Node_t* node, FILE* rewrite)
+int RewriteFile(Node_t* node, FILE* rewrite) // TODO asserts
 {
     if(node == NULL)
     {
@@ -131,7 +131,6 @@ int RewriteFile(Node_t* node, FILE* rewrite)
 
     RewriteFile(node->left, rewrite);
     RewriteFile(node->right, rewrite);
-
 
     fprintf(rewrite, "}");
 

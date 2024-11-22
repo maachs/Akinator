@@ -9,4 +9,6 @@
 #include "Definition.h"
 #include "Diff.h"
 
+int ChooseMode(Node_t* root, char** argv);
+
 #endif

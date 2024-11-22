@@ -33,19 +33,6 @@ int DifferenceInDefinition(Node_t* node)
     count_node_1 -= 1;
     count_node_2 -= 1;
 
-    for(int i = count_node_1; i > 0; i--)
-    {
-        printf("data 1 = %s\n", definition_addr_1[i]->data);
-    }
-    printf("\n");
-
-    for(int i = count_node_2; i > 0; i--)
-    {
-        printf("data 2 = %s\n", definition_addr_2[i]->data);
-    }
-    printf("\n");
-
-
     int count_node_1_ = count_node_1, count_node_2_ = count_node_2;
 
     printf("difference:\n");
@@ -56,7 +43,11 @@ int DifferenceInDefinition(Node_t* node)
 
     PrintSimilarity(definition_addr_1, definition_addr_2, &count_node_1_, &count_node_2_, dif_word_1, dif_word_2);
 
-    //printf("%s\n%s\n", definition_addr_1[count_node_1]->data, definition_addr_2[count_node_2]->data);
+    free(definition_addr_1);
+    definition_addr_1 = NULL;
+
+    free(definition_addr_2);
+    definition_addr_2 = NULL;
 
     return 0;
 }
@@ -67,27 +58,27 @@ int PrintDifference(Node_t** definition_1, Node_t** definition_2, int* count_1, 
     {
         return 0;
     }
-    if((strcmp(definition_1[(*count_1) - 1]->data, definition_2[(*count_2) - 1]->data) != 0) &&
-       (strcmp(definition_1[(*count_1) - 1]->data, definition_1[(*count_1)]->left->data) == 0) &&
-       (strcmp(definition_2[(*count_2) - 1]->data, definition_2[(*count_2)]->right->data) == 0))
+
+    if((definition_1[(*count_1) - 1] != definition_2[(*count_2) - 1]) &&
+       (definition_1[(*count_1) - 1] == definition_1[(*count_1)]->left) &&
+       (definition_2[(*count_2) - 1] == definition_2[(*count_2)]->right))
     {
         printf("%s is %s but %s is not %s\n", def_word_1, definition_1[*count_1]->data, def_word_2, definition_2[*count_2]->data);
 
         (*count_1) -= 1;
         (*count_2) -= 1;
     }
-    else if((strcmp(definition_1[(*count_1) - 1]->data, definition_2[(*count_2) - 1]->data) != 0) &&
-            (strcmp(definition_1[(*count_1) - 1]->data, definition_1[(*count_1)]->right->data) == 0) &&
-            (strcmp(definition_2[(*count_2) - 1]->data, definition_2[(*count_2)]->left->data) == 0))
+    else if((definition_1[(*count_1) - 1] != definition_2[(*count_2) - 1]) &&
+            (definition_1[(*count_1) - 1] == definition_1[(*count_1)]->right) &&
+            (definition_2[(*count_2) - 1] == definition_2[(*count_2)]->left))
     {
         printf("%s is not %s but %s is %s\n", def_word_1, definition_1[*count_1]->data, def_word_2, definition_2[*count_2]->data);
 
-        (*count_1) -= 1;
-        (*count_2) -= 1;
+        (*count_1)--;
+        (*count_2)--;
     }
     else
     {
-        //printf("IN ELSE\n");
         (*count_1)--;
         (*count_2)--;
     }
@@ -109,22 +100,22 @@ int PrintSimilarity(Node_t** definition_1, Node_t** definition_2, int* count_1, 
     }
 
     if((definition_1[*count_1] == definition_2[*count_2]) &&
-       (strcmp(definition_1[(*count_1) - 1]->data, definition_1[(*count_1)]->left->data) == 0) &&
-       (strcmp(definition_2[(*count_2) - 1]->data, definition_2[(*count_2)]->left->data) == 0))
+       (definition_1[(*count_1) - 1] == definition_1[(*count_1)]->left) &&
+       (definition_2[(*count_2) - 1] == definition_2[(*count_2)]->left))
     {
         printf("%s is %s and %s is %s\n", def_word_1, definition_1[*count_1]->data, def_word_2, definition_2[*count_2]->data);
 
-        (*count_1) -= 1;
-        (*count_2) -= 1;
+        (*count_1)--;
+        (*count_2)--;
     }
     else if((definition_1[*count_1] == definition_2[*count_2]) &&
-            (strcmp(definition_1[(*count_1) - 1]->data, definition_1[(*count_1)]->right->data) == 0) &&
-            (strcmp(definition_2[(*count_2) - 1]->data, definition_2[(*count_2)]->right->data) == 0))
+            (definition_1[(*count_1) - 1] == definition_1[(*count_1)]->right) &&
+            (definition_2[(*count_2) - 1] == definition_2[(*count_2)]->right))
     {
         printf("%s is not %s and %s is not %s\n", def_word_1, definition_1[*count_1]->data, def_word_2, definition_2[*count_2]->data);
 
-        (*count_1) -= 1;
-        (*count_2) -= 1;
+        (*count_1)--;
+        (*count_2)--;
     }
     else
     {
